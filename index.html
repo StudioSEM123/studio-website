@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio - Measured Marketing. Real Results.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a1a;
+            --color-secondary: #4a4a4a;
+            --color-accent: #0066cc;
+            --color-light: #f8f9fa;
+            --color-white: #ffffff;
+            --color-border: #e0e0e0;
+            --font-display: 'DM Serif Display', serif;
+            --font-body: 'IBM Plex Sans', sans-serif;
+            --section-padding: 120px;
+            --section-padding-mobile: 60px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--color-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-secondary);
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .cta-button {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .cta-button:hover {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 120px 40px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 102, 204, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-30px, -30px); }
+        }
+
+        .hero .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 72px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--color-primary);
+            font-weight: 400;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 20px;
+            color: var(--color-secondary);
+            margin-bottom: 16px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero .description {
+            font-size: 18px;
+            color: var(--color-secondary);
+            max-width: 700px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .hero-buttons .primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 16px 40px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .hero-buttons .primary:hover {
+            background: var(--color-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.2);
+        }
+
+        .hero-buttons .secondary {
+            background: transparent;
+            color: var(--color-primary);
+            padding: 16px 40px;
+            border: 2px solid var(--color-primary);
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .hero-buttons .secondary:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: var(--section-padding) 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 48px;
+            color: var(--color-primary);
+            margin-bottom: 24px;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--color-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            padding: 40px;
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--color-accent);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--color-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--color-secondary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Values Section */
+        .values {
+            background: var(--color-white);
+            padding: 58px 40px;
+            position: relative;
+        }
+
+        .values .section-header {
+            margin-bottom: 60px;
+        }
+
+        .values .section-label {
+            font-size: 14px;
+        }
+
+        .values .section-title {
+            font-size: 42px;
+        }
+
+        .values .section-description {
+            font-size: 17px;
+            color: var(--color-secondary);
+            max-width: 650px;
+            margin: 16px auto 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 0;
+        }
+
+        .value-item h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .value-item p {
+            color: var(--color-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Clients Section */
+        .clients {
+            background: var(--color-primary);
+            overflow: hidden;
+            padding: var(--section-padding) 0;
+        }
+
+        .clients .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 40px;
+            overflow: hidden;
+        }
+
+        .clients .section-label {
+            color: var(--color-accent);
+        }
+
+        .clients .section-title {
+            color: var(--color-white);
+        }
+
+        .clients-carousel-wrapper {
+            max-width: 900px;
+            margin: 60px auto 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .clients-carousel-wrapper::before,
+        .clients-carousel-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .clients-carousel-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, var(--color-primary), transparent);
+        }
+
+        .clients-carousel-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, var(--color-primary), transparent);
+        }
+
+        .clients-grid {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 80px;
+            animation: scroll 30s linear infinite;
+            width: fit-content;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .clients-grid:hover {
+            animation-play-state: paused;
+        }
+
+        .client-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 40px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            height: 60px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .client-logo img {
+            max-height: 50px;
+            max-width: 150px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1) opacity(0.5);
+            transition: all 0.3s ease;
+        }
+
+        .client-logo:hover img {
+            filter: brightness(0) invert(1) opacity(1);
+            transform: scale(1.05);
+        }
+
+        .client-name {
+            font-size: 24px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.5px;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .client-logo:hover .client-name {
+            opacity: 1;
+            color: var(--color-white);
+            transform: scale(1.05);
+        }
+
+        /* Approach Section */
+        .approach-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .approach-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .step {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            font-family: var(--font-display);
+            font-size: 48px;
+            color: var(--color-accent);
+            opacity: 0.4;
+            min-width: 80px;
+            font-weight: 400;
+        }
+
+        .step-content h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .step-content p {
+            color: var(--color-secondary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--color-primary);
+            color: var(--color-white);
+            text-align: center;
+            padding: 70px 40px;
+        }
+
+        .cta-section .section-title {
+            color: var(--color-white);
+            font-size: 38px;
+            margin-bottom: 16px;
+        }
+
+        .cta-section .section-description {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 16px;
+        }
+
+        .cta-section .cta-button {
+            background: var(--color-white);
+            color: var(--color-primary);
+            font-size: 15px;
+            padding: 14px 36px;
+            display: inline-block;
+            margin-top: 24px;
+        }
+
+        .cta-section .cta-button:hover {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 35px 40px 25px;
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .footer-brand h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+            font-size: 13px;
+        }
+
+        .footer-section h4 {
+            font-size: 13px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 6px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 60px;
+            }
+
+            nav .container {
+                padding: 20px 24px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 24px 60px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero .subtitle {
+                font-size: 18px;
+            }
+
+            .hero .description {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            section {
+                padding: var(--section-padding) 24px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .step {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .step-number {
+                min-width: auto;
+            }
+
+            footer .container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <svg width="108" height="36" viewBox="0 0 108 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <text x="6" y="21.6" font-family="'IBM Plex Sans', sans-serif" font-size="13.2" font-weight="300" fill="#4a4a4a" letter-spacing="1.5">
+                        STUDIO
+                    </text>
+                    <circle cx="78" cy="19.2" r="1.8" fill="#0066cc"/>
+                </svg>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#clients">Clients</a></li>
+                <li><a href="#approach">Approach</a></li>
+            </ul>
+            <a href="#contact" class="cta-button">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Measured Marketing.<br>Real Results.</h1>
+            <p class="subtitle">Digital marketing, done properly.</p>
+            <p class="description">We help companies grow through honest, data-driven digital marketing, with a Scandinavian approach focused on quality, clarity, and long-term results.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="primary">Start Your Growth</a>
+                <a href="#services" class="secondary">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">What We Do</div>
+                <h2 class="section-title">Comprehensive Digital Marketing</h2>
+                <p class="section-description">From strategy to execution, we deliver measurable results across all digital channels.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Growth Strategy</h3>
+                    <p>Data-driven strategies that scale your business sustainably. We analyze, optimize, and execute growth initiatives that deliver measurable ROI.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Search Marketing</h3>
+                    <p>SEO and SEM solutions that put you in front of your ideal customers. We optimize for visibility, traffic, and conversions.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✍️</div>
+                    <h3>Copywriting</h3>
+                    <p>Compelling content that converts. From landing pages to email campaigns, we craft messages that resonate with your audience.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Performance Marketing</h3>
+                    <p>Paid advertising campaigns optimized for maximum performance. Every dollar spent is tracked, measured, and optimized.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Analytics & Optimization</h3>
+                    <p>Continuous measurement and improvement. We track what matters and use insights to refine every aspect of your marketing.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>Scaling Solutions</h3>
+                    <p>Take your marketing to the next level. We build systems and processes that enable sustainable, profitable growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Trusted By</div>
+                <h2 class="section-title">Past Clients</h2>
+            </div>
+            <div class="clients-carousel-wrapper">
+                <div class="clients-grid">
+                <a href="https://peonybeauty.nl/" target="_blank" rel="noopener noreferrer" class="client-logo">
+                    <img src="https://peonybeauty.nl/cdn/shop/files/peony_beauty_logo_2023_v2_250x.png?v=1699622009" alt="Peony Beauty" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'client-name\'>Peony</span>';">
+                </a>
+                <a href="https://www.fresh.land/dk" target="_blank" rel="noopener noreferrer" class="client-logo">
+                    <img src="https://www.fresh.land/cdn/shop/files/Fresh_land_logo.svg?v=1667911849" alt="Fresh.Land" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'client-name\'>Fresh.Land</span>';">
+                </a>
+                <a href="https://minolei.com/" target="_blank" rel="noopener noreferrer" class="client-logo">
+                    <img src="https://minolei.com/cdn/shop/files/4_540x.png?v=1698231614" alt="Minolei" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'client-name\'>Minolei</span>';">
+                </a>
+                <a href="https://bybarb.se/" target="_blank" rel="noopener noreferrer" class="client-logo">
+                    <img src="https://bybarb.se/cdn/shop/files/By_Barb_Logo.svg?v=1680525733" alt="ByBarb" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'client-name\'>ByBarb</span>';">
+                </a>
+                <a href="https://nika.se/" target="_blank" rel="noopener noreferrer" class="client-logo">
+                    <img src="https://nika.se/cdn/shop/files/NIKA-LOGO-BLACK.png?v=1693922845" alt="NIKA" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'client-name\'>NIKA</span>';">
+                </a>
+                <a href="https://www.21-draw.com/" target="_blank" rel="noopener noreferrer" class="client-logo">
+                    <img src="https://www.21-draw.com/wp-content/themes/21draw/assets/images/21draw-logo.svg" alt="21 Draw" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'client-name\'>21 Draw</span>';">
+                </a>
+                <a href="https://www.swipework.com/" target="_blank" rel="noopener noreferrer" class="client-logo">
+                    <span class="client-name">Swipework</span>
+                </a>
+                <!-- Duplicate for seamless loop -->
+                <a href="https://peonybeauty.nl/" target="_blank" rel="noopener noreferrer" class="client-logo">
+                    <img src="https://peonybeauty.nl/cdn/shop/files/peony_beauty_logo_2023_v2_250x.png?v=1699622009" alt="Peony Beauty" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'client-name\'>Peony</span>';">
+                </a>
+                <a href="https://www.fresh.land/dk" target="_blank" rel="noopener noreferrer" class="client-logo">
+                    <img src="https://www.fresh.land/cdn/shop/files/Fresh_land_logo.svg?v=1667911849" alt="Fresh.Land" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'client-name\'>Fresh.Land</span>';">
+                </a>
+                <a href="https://minolei.com/" target="_blank" rel="noopener noreferrer" class="client-logo">
+                    <img src="https://minolei.com/cdn/shop/files/4_540x.png?v=1698231614" alt="Minolei" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'client-name\'>Minolei</span>';">
+                </a>
+                <a href="https://bybarb.se/" target="_blank" rel="noopener noreferrer" class="client-logo">
+                    <img src="https://bybarb.se/cdn/shop/files/By_Barb_Logo.svg?v=1680525733" alt="ByBarb" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'client-name\'>ByBarb</span>';">
+                </a>
+                <a href="https://nika.se/" target="_blank" rel="noopener noreferrer" class="client-logo">
+                    <img src="https://nika.se/cdn/shop/files/NIKA-LOGO-BLACK.png?v=1693922845" alt="NIKA" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'client-name\'>NIKA</span>';">
+                    <img src="https://nika.se/cdn/shop/files/NIKA-LOGO-BLACK.png?v=1693922845" alt="NIKA" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'client-name\'>NIKA</span>';">
+                </a>
+                <a href="https://www.21-draw.com/" target="_blank" rel="noopener noreferrer" class="client-logo">
+                    <img src="https://www.21-draw.com/wp-content/themes/21draw/assets/images/21draw-logo.svg" alt="21 Draw" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'client-name\'>21 Draw</span>';">
+                </a>
+                <a href="https://www.swipework.com/" target="_blank" rel="noopener noreferrer" class="client-logo">
+                    <span class="client-name">Swipework</span>
+                </a>
+            </div>
+            </div>
+        </div>
+    </section>
+    <!-- Approach Section -->
+    <section id="approach">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">How We Work</div>
+                <h2 class="section-title">Our Approach</h2>
+                <p class="section-description">A proven methodology that delivers consistent, measurable results.</p>
+            </div>
+            <div class="approach-content">
+                <div class="approach-steps">
+                    <div class="step">
+                        <div class="step-number">01</div>
+                        <div class="step-content">
+                            <h3>Discovery & Analysis</h3>
+                            <p>We start by understanding your business, audience, and goals. Deep analysis of your current state and competitive landscape informs our strategy.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">02</div>
+                        <div class="step-content">
+                            <h3>Strategy Development</h3>
+                            <p>Clear, actionable plans built on data and best practices. We define KPIs, channels, and tactics that align with your objectives.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">03</div>
+                        <div class="step-content">
+                            <h3>Execution & Optimization</h3>
+                            <p>Implementation with precision and continuous improvement. We test, measure, and refine to maximize performance.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">04</div>
+                        <div class="step-content">
+                            <h3>Growth & Scaling</h3>
+                            <p>Sustainable expansion of what works. We build on successes and scale winning strategies for long-term growth.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="values" class="values">
+        <div class="section-divider">
+            <span class="divider-dot"></span>
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Our Promise</div>
+                <h2 class="section-title">Built on Trust & Performance</h2>
+                <p class="section-description">These are the core values that define how we work with every client, every day.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-item">
+                    <h3>Transparent</h3>
+                    <p>Clear reporting, honest communication, no hidden costs.</p>
+                </div>
+                <div class="value-item">
+                    <h3>Data-Driven</h3>
+                    <p>Every decision backed by metrics and measurable outcomes.</p>
+                </div>
+                <div class="value-item">
+                    <h3>Professional</h3>
+                    <p>Expert execution with attention to detail and quality.</p>
+                </div>
+                <div class="value-item">
+                    <h3>Committed</h3>
+                    <p>Your success is our success. We're in this together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2 class="section-title">Ready to Grow?</h2>
+            <p class="section-description">Let's discuss how we can help your business achieve measurable, sustainable growth through strategic digital marketing.</p>
+            <a href="mailto:sem.optimise@gmail.com" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-brand">
+                <h3>Studio</h3>
+                <p>Measured marketing. Real results.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Growth Strategy</a></li>
+                    <li><a href="#services">Search Marketing</a></li>
+                    <li><a href="#services">Copywriting</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#approach">Approach</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Studio</p>
+        </div>
+    </footer>
+</body>
+</html>

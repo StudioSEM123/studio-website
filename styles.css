@@ -38,7 +38,9 @@
     --white: #ffffff;
 
     --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-fast: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-slow: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Reset */
@@ -177,6 +179,13 @@ h3 {
     font-weight: 700;
     letter-spacing: 0.1em;
     color: var(--navy-900);
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+}
+
+.logo:hover {
+    opacity: 0.8;
 }
 
 /* ==================
@@ -894,6 +903,21 @@ h3 {
     color: #fbbf24;
 }
 
+/* Form Container */
+#form-container {
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#form-container.fade-out {
+    opacity: 0;
+    transform: scale(0.98) translateY(-10px);
+}
+
+.cta-right {
+    transition: min-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 /* Audit Form */
 .audit-form {
     background: rgba(255, 255, 255, 0.95);
@@ -1294,5 +1318,158 @@ h3 {
 
     .hero-benefits li {
         font-size: 0.9375rem;
+    }
+}
+
+/* ==================
+   THANK YOU MESSAGE & FIREWORKS
+   ================== */
+.thank-you-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.98) translateY(10px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.thank-you-container.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.fireworks-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.firework-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: fireworkExplode 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    box-shadow: 0 0 6px currentColor;
+}
+
+@keyframes fireworkExplode {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    70% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+.thank-you-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.thank-you-icon {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    transform: scale(0);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.thank-you-container.visible .thank-you-icon {
+    transform: scale(1);
+    animation: pulse 2s ease-in-out infinite 0.8s;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 20px rgba(139, 92, 246, 0);
+    }
+}
+
+.thank-you-icon svg {
+    color: white;
+    opacity: 0;
+    transition: opacity 0.4s ease 0.3s;
+}
+
+.thank-you-container.visible .thank-you-icon svg {
+    opacity: 1;
+}
+
+.thank-you-content h3 {
+    font-size: 1.75rem;
+    color: var(--navy-900);
+    margin-bottom: 0.75rem;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+}
+
+.thank-you-container.visible .thank-you-content h3 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.thank-you-content p {
+    font-size: 1rem;
+    color: var(--navy-600);
+    line-height: 1.6;
+    max-width: 300px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease 0.35s, transform 0.5s ease 0.35s;
+}
+
+.thank-you-container.visible .thank-you-content p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .thank-you-container {
+        min-height: 350px;
+        padding: 2rem 1.5rem;
+    }
+
+    .thank-you-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .thank-you-icon svg {
+        width: 48px;
+        height: 48px;
+    }
+
+    .thank-you-content h3 {
+        font-size: 1.5rem;
     }
 }
